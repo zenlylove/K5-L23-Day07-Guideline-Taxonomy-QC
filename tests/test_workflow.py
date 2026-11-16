@@ -83,6 +83,18 @@ class WorkflowTest(unittest.TestCase):
             self.coco(self.sub / "labels" / f"{member}.json")
         self.run_script("qc_compare")
 
+    def test_make_cvat_labels_emits_valid_rectangle_and_checkbox_fields(self):
+        self.run_script("make_cvat_labels")
+        labels = json.loads((self.root / "cvat" / "labels_generated.json").read_text(encoding="utf-8"))
+        self.assertTrue(all(label["type"] == "rectangle" for label in labels))
+        for label in labels:
+            if label["name"] == "ignore_region":
+                self.assertEqual(label["attributes"], [])
+                continue
+            attributes = {attribute["name"]: attribute for attribute in label["attributes"]}
+            self.assertEqual(set(attributes), {"occluded_level", "truncated", "can_review"})
+            self.assertEqual(attributes["can_review"]["values"], ["true", "false"])
+
     def clean_lot(self):
         self.compare()
         self.run_script("build_final")

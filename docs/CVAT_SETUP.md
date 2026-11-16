@@ -8,7 +8,7 @@ Dùng instance CVAT do lớp chỉ định (coach đã kiểm quyền tạo Task
 2. **Projects → Create new project → Labels → Raw**: dán nội dung file, lưu.
 3. Kiểm: mỗi lớp có `occluded_level`, `truncated`, `can_review` (riêng `ignore_region` không cần thuộc tính).
 
-Tên nhãn trong CVAT phải trùng `taxonomy.json`.
+Tên nhãn trong CVAT phải trùng `taxonomy.json`. Dùng nguyên cấu hình do script sinh: mỗi lớp là `rectangle`, checkbox `can_review` có hai giá trị `true`/`false` theo định dạng Raw của CVAT.
 
 ## 2. Tạo Task gán độc lập
 
