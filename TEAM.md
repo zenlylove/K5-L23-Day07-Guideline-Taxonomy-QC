@@ -1,9 +1,9 @@
 # Thông tin nhóm
 
-- Tên nhóm:
-- Mã thành viên (ba chữ số):
-- Người điều phối:
-- Người review bản cuối:
+- Tên nhóm: 666
+- Mã thành viên (ba chữ số): 666
+- Người điều phối: Phạm Vũ Tùng Dương
+- Người review bản cuối: Phạm Vũ Tùng Dương
 - Commit chốt bài (điền ở kênh nộp sau khi commit):
 
 ## Kết quả tóm tắt (điền cuối bài)
