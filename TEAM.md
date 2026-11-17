@@ -1,9 +1,9 @@
 # Thông tin nhóm
 
-- Tên nhóm: 666
-- Mã thành viên (ba chữ số): 666,999
-- Người điều phối: Phạm Vũ Tùng Dương
-- Người review bản cuối: Phạm Vũ Tùng Dương
+- Tên nhóm: Poseidon
+- Mã thành viên (ba chữ số): 666,888
+- Người điều phối: 666
+- Người review bản cuối: 888
 - Commit chốt bài (điền ở kênh nộp sau khi commit):
 
 ## Kết quả tóm tắt (điền cuối bài)
