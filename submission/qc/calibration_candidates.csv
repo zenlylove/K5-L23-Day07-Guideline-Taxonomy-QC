@@ -1,0 +1,15 @@
+case_id,image,issue_type,annotators,class_a,class_b,box_a,box_b,iou,ghi_chu_tu_dong
+C001,img_005.jpg,can_review_anh,666,,,,,,motorcycles/riders — Dense overlapping group; verify every individually visible target >=20 px.
+C002,img_008.jpg,can_review_anh,666,,,,,,motorcycles/riders — Crowded roadside; review for omitted individually visible targets >=20 px.
+C003,img_010.jpg,can_review_anh,666,,,,,,motorcycles/riders — Dense market scene; review box completeness and person/motorcycle separation.
+C004,img_021.jpg,can_review_anh,666,,,,,,full frame — Dense traffic scene; current boxes do not establish completeness for visible people and motorcycles.
+C005,img_023.jpg,iou_thap,666|888,motorcycle,motorcycle,"[451,227,91,151]","[449,231,89,155]",0.85,IoU 0.85 < ngưỡng 0.85 (box lệch/lỏng/thiếu phần vật)
+C006,img_030.jpg,can_review_anh,666,,,,,,row of scooters — Review distinct motorcycle count and any visible riders.
+C007,img_034.jpg,can_review_anh,666,,,,,,roadside traffic — Review motorcycle count and overlapping person boxes.
+C008,img_035.jpg,can_review_anh,666,,,,,,roadside crowd — Review all separately visible people and motorcycles.
+C009,img_037.jpg,can_review_anh,666,,,,,,pickup/camper vehicle — Class needs review: pickup cargo area is enclosed; confirm a taxonomy class before release.
+C010,img_037.jpg,co_can_review,666,truck,,"[206,126,514,414]",,,"666 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C011,img_037.jpg,co_can_review,666,person,,"[24,328,62,187]",,,"666 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C012,img_037.jpg,co_can_review,888,truck,,"[194,115,524,410]",,,"888 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C013,img_037.jpg,co_can_review,888,person,,"[25,331,63,189]",,,"888 gắn cờ can_review (ca mơ hồ, cần chốt quy tắc)"
+C014,img_039.jpg,can_review_anh,666,,,,,,street foreground — Review motorcycle and pedestrian completeness.

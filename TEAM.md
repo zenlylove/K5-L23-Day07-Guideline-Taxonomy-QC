@@ -8,9 +8,9 @@
 
 ## Kết quả tóm tắt (điền cuối bài)
 
-- Lượt gán hoàn tất / được giao:
-- IAA trước calibration (kèm mẫu số):
-- Số ảnh phải calibration: … / 40
-- Vòng QC và số ảnh đã duyệt / cả lô:
-- Tỉ lệ lỗi: … % theo ảnh (…/…), … % theo đối tượng (…/…)
-- **Quyết định** (Release / Hold / Rework) và lý do một dòng:
+- Lượt gán hoàn tất / được giao: 80/80 lượt; 40 ảnh, 2 người gán.
+- IAA trước calibration (kèm mẫu số): IoU TB 0.922; cùng lớp 100%; 151 cặp box ghép.
+- Số ảnh phải calibration: 40 / 40 (thay đổi ngữ nghĩa R-02, rà toàn lô).
+- Vòng QC và số ảnh đã duyệt / cả lô: Vòng 1 chưa mở; 0/40. Thiếu nhãn cuối và batch_manifest.json.
+- Tỉ lệ lỗi: chưa đo / chưa đo (0/40 ảnh được duyệt, 0 đối tượng được review).
+- **Quyết định** (Release / Hold / Rework) và lý do một dòng: Hold — chưa hoàn tất sửa calibration và chưa có bằng chứng review toàn lô.

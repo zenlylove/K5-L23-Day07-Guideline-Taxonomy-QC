@@ -1,0 +1,23 @@
+{
+  "round": 1,
+  "status": "blocked",
+  "decision": "HOLD",
+  "reviewed_images": 0,
+  "assigned_images": 40,
+  "reviewed_objects": 0,
+  "review_csv": null,
+  "label_snapshot_sha256": null,
+  "blockers": [
+    "submission/qc/labels_calibrated.json is missing.",
+    "submission/qc/batch_manifest.json is missing.",
+    "The official round-one review package, overlays, and qc_review.csv have not been created.",
+    "No image or annotation has been recorded as reviewed; error rates are not measurable."
+  ],
+  "reported_observations": [
+    {
+      "description": "Many duplicate labels and boxes placed on blurry image regions were reported.",
+      "verification": "Not counted or mapped to image/annotation IDs; requires visual review and entries in qc_review.csv."
+    }
+  ],
+  "next_step": "Finish the calibration export, run build_final.py, create the full-lot QC round, and record each finding in qc_review.csv before producing the official qc_result.json."
+}

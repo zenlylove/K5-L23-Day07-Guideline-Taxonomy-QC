@@ -1,0 +1,27 @@
+{
+  "version": "v1.1",
+  "ignore_class": "ignore_region",
+  "classes": [
+    {"name": "car", "definition": "Ô tô chở người kiểu sedan, hatchback, coupe hoặc SUV; không gồm pickup."},
+    {"name": "truck", "definition": "Xe tải chở hàng, xe chuyên chở, hoặc pickup có khoang chở hàng, kể cả pickup gắn camper/canopy che thùng khi nhận diện rõ cấu trúc pickup."},
+    {"name": "van", "definition": "Xe cơ giới cỡ nhỏ có thân kín kiểu van, dùng chở người hoặc hàng; chỉ gán khi hình dáng đủ rõ."},
+    {"name": "motorcycle", "definition": "Xe máy hoặc mô tô có động cơ và hai bánh; không gồm xe đạp hoặc phương tiện ba bánh."},
+    {"name": "person", "definition": "Người thật đang hiện diện trong cảnh, gồm người đi bộ, người lái và hành khách; không gồm tượng, hình ảnh hoặc phản chiếu."},
+    {"name": "ignore_region", "definition": "Vùng không thuộc đối tượng mục tiêu hoặc không thể gán riêng nhất quán; không phải lớp vật thể và không dùng thay cho đối tượng hợp lệ chưa rõ lớp."}
+  ],
+  "attributes": [
+    {"name": "occluded_level", "type": "select", "values": ["0", "1", "2", "3"], "default": "0"},
+    {"name": "truncated", "type": "select", "values": ["no", "yes"], "default": "no"},
+    {"name": "can_review", "type": "checkbox", "values": [], "default": "false"}
+  ],
+  "rules": {
+    "min_box_height_px": 20,
+    "iou_thr_large": 0.85,
+    "iou_thr_small": 0.7,
+    "large_px": 50,
+    "iaa_iou": 0.85,
+    "iaa_class": 0.95,
+    "error_rate_img_max": 0.02,
+    "match_iou": 0.5
+  }
+}

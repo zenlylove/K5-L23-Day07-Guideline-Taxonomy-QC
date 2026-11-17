@@ -1,0 +1,4 @@
+{
+  "kind": "semantic",
+  "summary": "Phương án chờ xác nhận: làm rõ pickup gắn camper/canopy vẫn thuộc truck khi nhận diện rõ cấu trúc pickup; đây là thay đổi phạm vi lớp so với v1.0, cần rà lại toàn bộ 40 ảnh. Không thay đổi thuộc tính hoặc ngưỡng QC."
+}
