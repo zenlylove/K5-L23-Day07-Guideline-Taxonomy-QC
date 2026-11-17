@@ -30,5 +30,3 @@ Nếu nộp gói nén: kèm starter repo và dữ liệu, hoặc ghi đúng comm
 - [ ] `QC_REPORT.md` điền đủ, tỉ lệ kèm mẫu số, có quyết định.
 - [ ] `python scripts/check_submission.py --round <vòng-cuối>` không còn lỗi.
 - [ ] Không có `work/`, thông tin cá nhân hay thông tin đăng nhập; giữ ghi công ảnh.
-
-Bài còn **Hold** vì thiếu đầu vào: ghi rõ phần thiếu và người xử lý, nộp bằng chứng đã có qua kênh lớp để coach xem.

@@ -15,7 +15,7 @@
 - Với ba người, một ảnh đóng góp ba cặp người.
 - Box chưa ghép được đếm riêng. Chỉ một người đặt vùng `ignore_region` phủ box thì đưa ca vào calibration.
 - Release của lab yêu cầu **duyệt toàn bộ lô**. Lô 40 ảnh: một ảnh lỗi (2,5%) đã vượt ngưỡng.
-- Vòng demo chỉ lấy mẫu: luôn là **Hold** khi bàn giao.
+- Vòng demo chỉ lấy mẫu: luôn là **Chưa đủ điều kiện** khi bàn giao.
 - Giữ IAA **trước** calibration trong hồ sơ.
 
 ## Năm loại lỗi (trong `qc_review.csv`)
@@ -31,9 +31,9 @@
 
 Một ảnh có thể có nhiều lỗi (mỗi lỗi một dòng). Quy định từng dòng: [scripts/README.md](../scripts/README.md#phiếu-qc).
 
-## Cây quyết định: Hold → Rework → Release
+## Cây quyết định: Chưa đủ điều kiện → Rework → Release
 
-1. **Hold** nếu thiếu bằng chứng, guideline / dữ liệu còn vấn đề, review lệch phiên bản, hoặc mới chỉ lấy mẫu.
+1. **Chưa đủ điều kiện** nếu thiếu bằng chứng, guideline / dữ liệu còn vấn đề, review lệch phiên bản, hoặc mới chỉ lấy mẫu.
 2. **Rework** nếu > 2% ảnh lỗi hoặc có **lỗi lặp** theo quy tắc của lab. Ghi nguyên nhân, người sửa, kết quả kiểm lại.
 3. **Release** khi reviewer xác nhận bằng chứng đạt yêu cầu bàn giao lô thực hành.
 

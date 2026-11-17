@@ -4,7 +4,7 @@
 
 Bạn nhận một guideline **sơ sài** và 40 ảnh chứa nhiều tình huống mà nó không nói tới.
 Nhóm **viết lại guideline cho đủ dùng**, gán nhãn độc lập, đo độ đồng thuận, họp calibration,
-rồi bàn giao nhãn kèm quyết định **Release / Hold / Rework**.
+rồi bàn giao nhãn kèm quyết định **Release / Chưa đủ điều kiện / Rework**.
 
 ![Mẫu ảnh trong bộ dữ liệu](docs/assets/sample_grid.jpg)
 

@@ -154,7 +154,7 @@ class WorkflowTest(unittest.TestCase):
         self.review()
         snapshot = self.qc / "reviews" / "round-01" / "calibration_decisions_snapshot.csv"
         snapshot.write_text("invalid\n")
-        self.assertIn("**HOLD**", self.run_script("qc_report"))
+        self.assertIn("**CHƯA ĐỦ ĐIỀU KIỆN**", self.run_script("qc_report"))
 
     def test_build_rejects_final_output_as_corrected_input(self):
         self.clean_lot()
@@ -179,11 +179,11 @@ class WorkflowTest(unittest.TestCase):
         self.clean_lot()
         self.assertTrue((self.qc / "calibration_decisions.csv").exists())
         self.run_script("qc_sample")
-        self.assertIn("**HOLD**", self.run_script("qc_report"))
+        self.assertIn("**CHƯA ĐỦ ĐIỀU KIỆN**", self.run_script("qc_report"))
         self.review()
         self.assertIn("**RELEASE**", self.run_script("qc_report"))
         (self.qc / "iaa_summary.json").unlink()
-        self.assertIn("**HOLD**", self.run_script("qc_report"))
+        self.assertIn("**CHƯA ĐỦ ĐIỀU KIỆN**", self.run_script("qc_report"))
 
     def test_omissions_are_counted_separately_and_review_rounds_preserved(self):
         self.clean_lot()
@@ -237,7 +237,7 @@ class WorkflowTest(unittest.TestCase):
         final = json.loads((self.qc / "labels_calibrated.json").read_text())
         self.assertEqual(final["annotations"][0]["bbox"][0], 2)
         self.assertIn("2.0,1.0,20.0,60.0", (self.qc / "labels_calibrated.csv").read_text())
-        self.assertIn("**HOLD**", self.run_script("qc_report"))
+        self.assertIn("**CHƯA ĐỦ ĐIỀU KIỆN**", self.run_script("qc_report"))
         self.assertEqual((first / "qc_result.json").read_bytes(), original_result)
         self.run_script("qc_sample", "--round", "2")
         self.review(round_number=2)
@@ -275,10 +275,14 @@ class WorkflowTest(unittest.TestCase):
         self.run_script("check_submission", success=False)
         template = (SOURCE / "docs" / "QC_REPORT_TEMPLATE.md").read_text(encoding="utf-8")
         complete = re.sub(r"<<[^>]*>>", "Bằng chứng thử nghiệm", template.replace(
-            "<<số nguyên, ví dụ 1>>", "1").replace("<<Release hoặc Hold hoặc Rework>>", "Release"))
+            "<<số nguyên, ví dụ 1>>", "1").replace(
+                "<<Release hoặc Chưa đủ điều kiện hoặc Rework>>", "Release"))
         report.write_text(complete, encoding="utf-8")
         self.run_script("check_submission")
-        report.write_text(complete.replace("- Quyết định: Release", "- Quyết định: Hold"), encoding="utf-8")
+        report.write_text(
+            complete.replace("- Quyết định: Release", "- Quyết định: Chưa đủ điều kiện"),
+            encoding="utf-8",
+        )
         self.run_script("check_submission", success=False)
 
     def test_revised_decision_rejects_previous_export_for_same_scope(self):
@@ -337,7 +341,7 @@ class WorkflowTest(unittest.TestCase):
         self.clean_lot()
         self.run_script("qc_sample", "--n", "2")
         self.review()
-        self.assertIn("**HOLD**", self.run_script("qc_report"))
+        self.assertIn("**CHƯA ĐỦ ĐIỀU KIỆN**", self.run_script("qc_report"))
 
     def test_schema_rejects_invalid_default_and_changed_threshold(self):
         data = json.loads(self.tax.read_text())
@@ -371,7 +375,7 @@ class WorkflowTest(unittest.TestCase):
         data = json.loads(labels.read_text())
         data["annotations"][0]["bbox"][0] += 1
         self.write_json(labels, data)
-        self.assertIn("**HOLD**", self.run_script("qc_report"))
+        self.assertIn("**CHƯA ĐỦ ĐIỀU KIỆN**", self.run_script("qc_report"))
         self.run_script("qc_sample", success=False)
 
 

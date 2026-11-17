@@ -1,12 +1,12 @@
 ---
 day: "D07"
 title: "Day 07 Lab — Guideline, Taxonomy & QC"
-description: "Xây dựng guideline gán nhãn đủ dùng, chuẩn hóa taxonomy theo JSON Schema, gán bounding box độc lập bằng mã thành viên trên CVAT, đo IAA, calibration có truy vết phiên bản và bàn giao lô nhãn với quyết định Release / Hold / Rework."
+description: "Xây dựng guideline gán nhãn đủ dùng, chuẩn hóa taxonomy theo JSON Schema, gán bounding box độc lập bằng mã thành viên trên CVAT, đo IAA, calibration có truy vết phiên bản và bàn giao lô nhãn với quyết định Release / Chưa đủ điều kiện / Rework."
 outcomes:
   - "Viết được guideline cá nhân (`guideline_<mã>.md`) từ bản khởi đầu v0 và hợp nhất thành `guideline_v1.0_agreed.md` kèm mã quy tắc `R-01`, `R-02`… và `submission/taxonomy.json` hợp lệ theo `schemas/taxonomy.schema.json`."
   - "Chia ảnh gán mù đôi K=2 (hoặc K=3 với nhóm 5 người) theo mã thành viên 3 chữ số và xuất đủ nhãn COCO 1.0 từ CVAT vượt qua `python scripts/validate_labels.py --all`."
   - "Đo độ đồng thuận IAA bằng `qc_compare.py`, trực quan hóa ca lệch bằng `viz_disagreement.py`, hoàn thiện bảng 9 cột `calibration_decisions.csv`, `submission/guideline_change.json` và tạo `labels_calibrated.json` kèm `batch_manifest.json`."
-  - "Thực hiện duyệt QC toàn lô theo vòng (`qc_sample.py --round 1`, `qc_report.py --round 1`), hoàn thiện `submission/qc/QC_REPORT.md` đủ 10 trường bắt buộc với quyết định Release / Hold / Rework và vượt qua `python scripts/check_submission.py --round 1` với 0 lỗi."
+  - "Thực hiện duyệt QC toàn lô theo vòng (`qc_sample.py --round 1`, `qc_report.py --round 1`), hoàn thiện `submission/qc/QC_REPORT.md` đủ 10 trường bắt buộc với quyết định Release / Chưa đủ điều kiện / Rework và vượt qua `python scripts/check_submission.py --round 1` với 0 lỗi."
 prerequisites:
   - "Đã làm quen thao tác tạo Project, Task, vẽ Rectangle và xuất COCO 1.0 trên CVAT."
   - "Có Python 3.9+, Git và mã thành viên ba chữ số (ví dụ `101`, `102`, `103`)."
@@ -20,14 +20,14 @@ commonErrors:
   - "Thiếu hoặc thừa ảnh trong file nhãn → Kiểm tra Task CVAT để bảo đảm chứa đúng ảnh trong `submission/qc/assignments/<mã>.txt`."
   - "Thiếu thuộc tính sau khi export COCO 1.0 → Kiểm tra cấu hình Project, lưu lại box rồi export lại."
   - "`build_final.py` báo IAA đã đổi → Lưu bảng `calibration_decisions.csv` cũ ra nơi khác, xóa file cũ để script tạo lại bảng khớp `calibration_context.json` mới."
-  - "`qc_report.py` báo lệch phiên bản hoặc Hold → Chạy `qc_sample.py --round <số mới>` mỗi khi thay đổi nhãn cuối, giữ nguyên vòng cũ để truy vết."
+  - "`qc_report.py` báo lệch phiên bản hoặc Chưa đủ điều kiện → Chạy `qc_sample.py --round <số mới>` mỗi khi thay đổi nhãn cuối, giữ nguyên vòng cũ để truy vết."
 requiresSubmission: true
 workMode: "team"
 ---
 
 # Day 07 Lab — Guideline, Taxonomy & QC
 
-Bài lab này thực hành quy trình chuẩn bị dữ liệu và kiểm soát chất lượng (QC) theo nhóm **2–5 người** trong **4 giờ** trên toàn bộ **40 ảnh đường phố** (`data/images/img_001.jpg` đến `img_040.jpg`). Bạn nhận bản [guideline/guideline_v0_starter.md](guideline/guideline_v0_starter.md) cố ý sơ sài để nhóm tự phát hiện tình huống biên, viết lại đặc tả đủ dùng, gán nhãn độc lập trên CVAT theo **mã thành viên ba chữ số**, đo độ đồng thuận giữa người gán (IAA), họp calibration có truy vết phiên bản và duyệt toàn lô để ra quyết định **Release / Hold / Rework**.
+Bài lab này thực hành quy trình chuẩn bị dữ liệu và kiểm soát chất lượng (QC) theo nhóm **2–5 người** trong **4 giờ** trên toàn bộ **40 ảnh đường phố** (`data/images/img_001.jpg` đến `img_040.jpg`). Bạn nhận bản [guideline/guideline_v0_starter.md](guideline/guideline_v0_starter.md) cố ý sơ sài để nhóm tự phát hiện tình huống biên, viết lại đặc tả đủ dùng, gán nhãn độc lập trên CVAT theo **mã thành viên ba chữ số**, đo độ đồng thuận giữa người gán (IAA), họp calibration có truy vết phiên bản và duyệt toàn lô để ra quyết định **Release / Chưa đủ điều kiện / Rework**.
 
 :::image{src="docs/assets/sample_grid.jpg" alt="Lưới 6 ảnh mẫu trong bộ dữ liệu đường phố gồm tuk-tuk, xe chở ô tô, tượng đồng, xe diễu hành, tượng bán tải và ma-nơ-canh" caption="Những tình huống thực tế trong 40 ảnh mà guideline v0 chưa xử lý: tuk-tuk, xe chở ô tô, tượng, xe diễu hành, ma-nơ-canh và phản chiếu gương."}
 :::
@@ -302,15 +302,15 @@ Pha 5 hoàn tất khi mọi ca bất thường đều có người chốt, vết
 
 ## Pha 6 — Duyệt QC toàn lô, lập báo cáo và kiểm tra bàn giao
 
-### Bản chất và cây quyết định Hold → Rework → Release
+### Bản chất và cây quyết định Chưa đủ điều kiện → Rework → Release
 
-Khác với cách chỉ lấy mẫu 20 ảnh minh họa, quy trình chuẩn của Pha 6 mặc định **duyệt toàn bộ lô 40/40 ảnh** (`python scripts/qc_sample.py --round 1`). Toàn bộ ảnh overlay có gắn sẵn ID vật (`#174 tuk_tuk`…) được xuất vào `work/review/round-01/`, đi kèm bản chụp nhãn và phiếu kiểm 7 cột `submission/qc/reviews/round-01/qc_review.csv` (`image, object_id, error_type, reviewer, rule_id, region, note`). Lưu ý rằng tùy chọn `--n` (ví dụ `qc_sample.py --round 99 --n 5 --seed 42`) chỉ dùng để demo lấy mẫu ngẫu nhiên và **luôn giữ trạng thái Hold** khi bàn giao.
+Khác với cách chỉ lấy mẫu 20 ảnh minh họa, quy trình chuẩn của Pha 6 mặc định **duyệt toàn bộ lô 40/40 ảnh** (`python scripts/qc_sample.py --round 1`). Toàn bộ ảnh overlay có gắn sẵn ID vật (`#174 tuk_tuk`…) được xuất vào `work/review/round-01/`, đi kèm bản chụp nhãn và phiếu kiểm 7 cột `submission/qc/reviews/round-01/qc_review.csv` (`image, object_id, error_type, reviewer, rule_id, region, note`). Lưu ý rằng tùy chọn `--n` (ví dụ `qc_sample.py --round 99 --n 5 --seed 42`) chỉ dùng để demo lấy mẫu ngẫu nhiên và **luôn giữ trạng thái Chưa đủ điều kiện** khi bàn giao.
 
 :::image{src="walkthrough_images/10_qc_review_sample.png" alt="Ảnh img_035.png trong thư mục duyệt QC vẽ sẵn ID đối tượng (#174 tuk_tuk)" caption="Ảnh overlay trong thư mục duyệt QC (img_035.png): hiển thị sẵn ID từng vật (#174 tuk_tuk) để reviewer đối chiếu vào qc_review.csv."}
 :::
 
-Khi tổng hợp số liệu bằng `python scripts/qc_report.py --round 1`, quyết định đi theo cây **Hold → Rework → Release**:
-- **Hold**: thiếu bằng chứng, guideline/dữ liệu có vấn đề (`--guideline-gap N` hoặc `--data-problem N`), còn box bật `can_review`, hoặc vòng đó chỉ là demo lấy mẫu (`--n`).
+Khi tổng hợp số liệu bằng `python scripts/qc_report.py --round 1`, quyết định đi theo cây **Chưa đủ điều kiện → Rework → Release**:
+- **Chưa đủ điều kiện**: thiếu bằng chứng, guideline/dữ liệu có vấn đề (`--guideline-gap N` hoặc `--data-problem N`), còn box bật `can_review`, hoặc vòng đó chỉ là demo lấy mẫu (`--n`).
 - **Rework**: tỉ lệ ảnh có lỗi `> 2%` (với lô 40 ảnh, chỉ cần `1/40 = 2.5%` ảnh lỗi là vượt ngưỡng), hoặc có lỗi lặp lại (`>= 3` lỗi và chiếm `>= 50%` tổng lỗi). Khi Rework, nhóm cập nhật lại quyết định/nhãn từ Pha 5 và mở vòng mới `--round 2` (giữ nguyên toàn bộ thư mục `round-01` để truy vết).
 - **Release**: chỉ khi reviewer xác nhận lô duyệt toàn bộ đạt `<= 2%` ảnh lỗi, không lỗi lặp lại và đủ bằng chứng hợp lệ.
 

@@ -33,7 +33,7 @@
 
 ## 5. Quyết định bàn giao
 
-- Quyết định: Hold
+- Quyết định: Chưa đủ điều kiện
 - Lý do, người nhận và phạm vi sử dụng: Chưa có bản nhãn calibration được xuất và xác thực, chưa có manifest, chưa duyệt 40/40 ảnh; không dùng làm nhãn phát hành.
 - Nếu còn việc: Hoàn tất rà/sửa 40 ảnh trong CVAT, xuất COCO theo đúng hash, chạy `build_final.py`, tạo vòng QC mới và điền phiếu theo ảnh/rule thực tế. `submission/qc/qc_result_blocked.json` chỉ ghi trạng thái chặn hiện tại, không thay thế kết quả chính thức của `qc_report.py`.
 - Kiểm ngược từ báo cáo tới ảnh, rule và nhãn: `img_021` → `work/viz/img_021.png` và R-03/R-10; `img_017` → `work/viz/img_017.png` và R-01/R-12; nhãn cuối chưa tồn tại để kiểm đối chiếu.

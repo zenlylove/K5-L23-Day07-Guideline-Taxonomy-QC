@@ -103,7 +103,7 @@ Giữ nguyên ba thuộc tính đã định nghĩa trong `submission/taxonomy.js
 - Ghi số liệu kèm tử số/mẫu số; IAA chỉ tính trên cặp box ghép 1–1. Không có cặp thì báo N/A. Báo riêng box chưa ghép và bất đồng liên quan `ignore_region`.
 - Script kiểm cấu trúc, lớp, thuộc tính, kích thước/vị trí và độ lệch; reviewer vẫn phải đối chiếu ảnh gốc để tìm box không sát, vật bỏ sót hoặc lỗi cùng hiểu sai.
 - Lượt gán độc lập Pha 3 phải dùng đúng taxonomy v1.0 và guideline này. Không đổi nghĩa quy tắc giữa lượt gán; mọi thay đổi sau khi khóa phải theo quy trình calibration và tăng phiên bản.
-- Hold nếu thiếu bằng chứng hoặc mới duyệt mẫu; Rework nếu vượt ngưỡng ảnh lỗi hoặc lỗi hệ thống lặp lại; chỉ Release theo điều kiện nghiệm thu của lab.
+- Chưa đủ điều kiện nếu thiếu bằng chứng hoặc mới duyệt mẫu; Rework nếu vượt ngưỡng ảnh lỗi hoặc lỗi hệ thống lặp lại; chỉ Release theo điều kiện nghiệm thu của lab.
 
 | Phiên bản | Thay đổi | Căn cứ |
 |---|---|---|

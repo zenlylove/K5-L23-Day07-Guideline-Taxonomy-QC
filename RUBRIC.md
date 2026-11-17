@@ -1,6 +1,6 @@
 # Rubric — 100 điểm
 
-Chấm theo **bằng chứng** và cách giải thích. Hold hoặc Rework có căn cứ vẫn có thể được điểm tốt. Phần cá nhân coach xem theo từng mã thành viên.
+Chấm theo **bằng chứng** và cách giải thích. Chưa đủ điều kiện hoặc Rework có căn cứ vẫn có thể được điểm tốt. Phần cá nhân coach xem theo từng mã thành viên.
 
 | # | Hạng mục | Điểm | Bằng chứng |
 |---|---|---:|---|

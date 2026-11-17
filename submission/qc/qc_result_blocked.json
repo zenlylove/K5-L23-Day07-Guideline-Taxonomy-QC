@@ -1,7 +1,7 @@
 {
   "round": 1,
   "status": "blocked",
-  "decision": "HOLD",
+  "decision": "BLOCKED",
   "reviewed_images": 0,
   "assigned_images": 40,
   "reviewed_objects": 0,

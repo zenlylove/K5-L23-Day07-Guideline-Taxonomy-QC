@@ -20,8 +20,8 @@ Chạy từ thư mục gốc sau khi cài `requirements.txt`. [GUIDE.md](../GUID
 Ghi chú:
 - Chia ảnh: K = 2 người/ảnh; nhóm 5 người K = 3. Cùng mã và `--seed` thì ra cùng bảng chia.
 - `viz_disagreement.py` cũng nhận `--images all`, tên ảnh cụ thể, `--source consensus|final`.
-- `qc_sample.py` mặc định duyệt **toàn lô**. `--n` chỉ để demo (kết quả là Hold). Vòng đã có thì dùng số vòng mới.
-- `qc_report.py` nhận thêm `--guideline-gap N`, `--data-problem N` (dẫn tới Hold). Quyết định chỉ là **gợi ý**.
+- `qc_sample.py` mặc định duyệt **toàn lô**. `--n` chỉ để demo (kết quả là Chưa đủ điều kiện). Vòng đã có thì dùng số vòng mới.
+- `qc_report.py` nhận thêm `--guideline-gap N`, `--data-problem N` (dẫn tới Chưa đủ điều kiện). Quyết định chỉ là **gợi ý**.
 
 ## Phiếu QC
 

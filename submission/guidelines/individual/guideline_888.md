@@ -109,7 +109,7 @@ Các ví dụ trên là ca tham chiếu cho cách áp dụng quy tắc, không t
 - IAA tính trên các cặp box ghép 1–1; báo số liệu dạng tử số/mẫu số. Không có cặp thì ghi N/A, không ghi thành 0. Báo riêng box chưa ghép và bất đồng liên quan `ignore_region`.
 - Tách lỗi theo ảnh khỏi lỗi theo đối tượng. Một ảnh có thể có nhiều lỗi; ghi từng lỗi theo phiếu QC. Lô 40 ảnh có 1 ảnh lỗi tương ứng 2.5%, vượt ngưỡng ảnh lỗi tối đa 2%.
 - Chỉ số tự động không chứng minh box ôm sát vật thật, không đảm bảo cả nhóm không cùng bỏ sót hoặc cùng áp dụng sai quy tắc. Reviewer cần đối chiếu nhãn với ảnh gốc và guideline đúng phiên bản.
-- Thiếu bằng chứng, chỉ duyệt mẫu, hoặc nhãn/guideline lệch phiên bản thì Hold. Vượt ngưỡng lỗi hoặc có lỗi lặp theo cùng một quy tắc thì Rework; chỉ Release khi đã duyệt đủ lô và bằng chứng đạt yêu cầu của lab.
+- Thiếu bằng chứng, chỉ duyệt mẫu, hoặc nhãn/guideline lệch phiên bản thì Chưa đủ điều kiện. Vượt ngưỡng lỗi hoặc có lỗi lặp theo cùng một quy tắc thì Rework; chỉ Release khi đã duyệt đủ lô và bằng chứng đạt yêu cầu của lab.
 - Mỗi ca cần ghi ảnh, vùng, rule ID, quyết định, người chốt và kết quả kiểm lại. Nếu thay đổi làm đổi đối tượng/lớp/box/thuộc tính, tăng phiên bản guideline và xác định phạm vi kiểm lại theo quy trình nhóm.
 
 | Phiên bản | Thay đổi | Căn cứ |

@@ -1,4 +1,4 @@
-"""Tính số QC theo vòng duyệt và gợi ý Hold / Rework / Release cho lô thực hành."""
+"""Tính số QC theo vòng duyệt và gợi ý quyết định bàn giao cho lô thực hành."""
 from __future__ import annotations
 
 import argparse
@@ -105,7 +105,7 @@ def make_report(directory, args):
     total_objects = sum(obj.cls != tax.ignore for image in statuses for obj in labels.objects[image])
     repeated = types and types.most_common(1)[0][1] >= 3 and types.most_common(1)[0][1] * 2 >= sum(types.values())
     over_limit = reviewed and len(bad_images) / reviewed > tax.rules["error_rate_img_max"]
-    decision = "HOLD" if problems else "REWORK" if over_limit or repeated else "RELEASE"
+    decision = "BLOCKED" if problems else "REWORK" if over_limit or repeated else "RELEASE"
 
     text = [
         f"## Vòng {args.round} — {metadata['mode']}",
@@ -144,11 +144,16 @@ def main() -> None:
         decision, summary = make_report(directory, args)
     except (OSError, ValueError, KeyError, TypeError, SystemExit) as exc:
         current = False
-        decision = "HOLD"
+        decision = "BLOCKED"
         summary = [f"- Bằng chứng QC thiếu, sai hoặc đã thay đổi: {exc}."]
         if output.exists():
             summary.append("- Giữ báo cáo đã lưu của vòng cũ. Mở vòng mới cho lô hiện tại.")
-    text = "\n".join(["# Báo cáo QC tự động", "", f"**{decision}**", "", *summary])
+    display_decision = {
+        "BLOCKED": "CHƯA ĐỦ ĐIỀU KIỆN",
+        "REWORK": "REWORK",
+        "RELEASE": "RELEASE",
+    }[decision]
+    text = "\n".join(["# Báo cáo QC tự động", "", f"**{display_decision}**", "", *summary])
     print(text)
     if directory.is_dir() and (current or not output.exists()):
         output.write_text(text + "\n", encoding="utf-8")

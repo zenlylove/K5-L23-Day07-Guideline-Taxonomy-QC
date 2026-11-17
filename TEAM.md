@@ -13,4 +13,4 @@
 - Số ảnh phải calibration: 40 / 40 (thay đổi ngữ nghĩa R-02, rà toàn lô).
 - Vòng QC và số ảnh đã duyệt / cả lô: Vòng 1 chưa mở; 0/40. Thiếu nhãn cuối và batch_manifest.json.
 - Tỉ lệ lỗi: chưa đo / chưa đo (0/40 ảnh được duyệt, 0 đối tượng được review).
-- **Quyết định** (Release / Hold / Rework) và lý do một dòng: Hold — chưa hoàn tất sửa calibration và chưa có bằng chứng review toàn lô.
+- **Quyết định** (Release / Chưa đủ điều kiện / Rework) và lý do một dòng: Chưa đủ điều kiện — chưa hoàn tất sửa calibration và chưa có bằng chứng review toàn lô.

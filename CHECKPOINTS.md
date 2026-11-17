@@ -20,6 +20,6 @@ Bài **nhóm 2–5 người**, 240 phút. Mốc tính từ lúc bắt đầu, l�
 - **CP3:** vì sao phải gán độc lập? Script kiểm được gì và **không** kiểm được gì (box có ôm sát vật không)?
 - **CP4:** IAA thấp thì sửa guideline hay sửa người gán? Dấu hiệu nào phân biệt?
 - **CP5:** quyết định nào là quy tắc mới phải vào guideline? Thiếu dòng ghi quyết định thì sau này nhóm tranh luận lại đúng ca đó.
-- **CP6:** tỉ lệ lỗi **theo ảnh** khác **theo đối tượng** thế nào, vì sao luôn ghi mẫu số? Cây quyết định đi theo thứ tự Hold → Rework → Release.
+- **CP6:** tỉ lệ lỗi **theo ảnh** khác **theo đối tượng** thế nào, vì sao luôn ghi mẫu số? Cây quyết định đi theo thứ tự Chưa đủ điều kiện → Rework → Release.
 
 Nếu CVAT chậm hoặc thiếu quyền Review, báo coach. Dùng ảnh chồng box và phiếu CSV để tiếp tục xem ca. Chi tiết lệnh: [GUIDE.md](GUIDE.md).

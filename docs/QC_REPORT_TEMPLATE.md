@@ -35,7 +35,7 @@ Copy vào `submission/qc/QC_REPORT.md`. Giữ tên trường trong các dòng g�
 
 ## 5. Quyết định bàn giao
 
-- Quyết định: <<Release hoặc Hold hoặc Rework>>
+- Quyết định: <<Release hoặc Chưa đủ điều kiện hoặc Rework>>
 - Lý do, người nhận và phạm vi sử dụng: <<>>
 - Nếu còn việc: <<việc, người xử lý, bằng chứng cần kiểm lại>>
 - Kiểm ngược từ báo cáo tới ảnh, rule và nhãn: <<mã ca, đường dẫn, kết quả>>

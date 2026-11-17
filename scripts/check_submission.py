@@ -80,10 +80,12 @@ def main() -> int:
             errors.append("qc_result.json lệch phiếu hoặc bản nhãn. Chạy qc_report.py với đúng vòng.")
         review_args = argparse.Namespace(round=args.round, **result["reviewer_inputs"])
         computed, _ = make_report(directory, review_args)
-        if (
-            computed != result["decision"] or decision not in {"Release", "Hold", "Rework"}
-            or computed != decision.upper()
-        ):
+        decision_codes = {
+            "Release": "RELEASE",
+            "Chưa đủ điều kiện": "BLOCKED",
+            "Rework": "REWORK",
+        }
+        if computed != result["decision"] or decision_codes.get(decision) != computed:
             errors.append(f"Quyết định trong bài nộp cần khớp vòng QC hiện tại ({computed}).")
     except (OSError, ValueError, KeyError, TypeError, SystemExit) as exc:
         errors.append(f"Chưa đủ bằng chứng bàn giao: {exc}.")

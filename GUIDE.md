@@ -123,7 +123,7 @@ Kết quả gợi ý, người kiểm xác nhận:
 
 | Quyết định | Khi nào | Làm gì tiếp |
 |---|---|---|
-| **Hold** | thiếu bằng chứng, guideline chưa chốt, dữ liệu có vấn đề | ghi phần còn thiếu; có thể thêm `--guideline-gap N` / `--data-problem N` |
+| **Chưa đủ điều kiện** | thiếu bằng chứng, guideline chưa chốt, dữ liệu có vấn đề | ghi phần còn thiếu; có thể thêm `--guideline-gap N` / `--data-problem N` |
 | **Rework** | > 2% ảnh lỗi hoặc lỗi lặp | thêm ca vào nhật ký (ID `Q01`…), làm lại Pha 5 cho phạm vi cần sửa, rồi `--round 2` (giữ vòng 1) |
 | **Release** | số liệu đạt, người kiểm xác nhận | bàn giao kèm báo cáo |
 
@@ -133,7 +133,7 @@ Cuối cùng:
 3. Nhờ một người ngoài nhóm lần theo một ca từ báo cáo tới ảnh, quy tắc và nhãn.
 4. Nộp theo [SUBMISSION.md](SUBMISSION.md).
 
-**Mở rộng:** `python scripts/qc_sample.py --round 99 --n 5 --seed 42` minh họa chọn mẫu ngẫu nhiên. Vòng demo luôn giữ trạng thái **Hold** khi bàn giao.
+**Mở rộng:** `python scripts/qc_sample.py --round 99 --n 5 --seed 42` minh họa chọn mẫu ngẫu nhiên. Vòng demo luôn giữ trạng thái **Chưa đủ điều kiện** khi bàn giao.
 
 ## Lỗi hay gặp
 
